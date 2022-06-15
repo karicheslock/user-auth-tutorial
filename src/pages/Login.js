@@ -12,14 +12,12 @@ function Login() {
 
     const navigate = useNavigate();
 
-    isAuth;
-
     const isInvalid = email === '' || password === '';
     
     const signInWithGoogle = () => {
             signInWithPopup(auth, provider).then((result) => {
-            localStorage.setItem("isAuth", true);
             setIsAuth(true);
+            localStorage.setItem("isAuth", isAuth);
             navigate('/');
         });
     };
@@ -38,9 +36,9 @@ function Login() {
 
       try {
           await signInWithEmailAndPassword(auth, email, password).then((result) => {
-              localStorage.setItem("isAuth", true);
-              setIsAuth(true);
-              navigate('/');
+            setIsAuth(true);  
+            localStorage.setItem("isAuth", isAuth);
+            navigate('/');
           }) 
       } catch (error) {
           setEmail('');

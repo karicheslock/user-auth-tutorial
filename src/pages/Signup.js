@@ -21,8 +21,6 @@ function SignUp() {
     const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
 
     const navigate = useNavigate();
-    
-    isAuth;
 
     const isEmailInvalid = email !== confirmEmail;
     const isPasswordInvalid = password !== confirmPassword;
@@ -39,8 +37,8 @@ function SignUp() {
             if (docs.docs.length === 0) {
                 await addDoc(userCollectionRef, {userId: user.uid, fullName: user.displayName, username: user.displayName.toLowerCase().replace(/\s/g, ''), emailAddress: user.email, authProvider: "google", following: [], followers: [], dateCreated: Date.now()});
             }
-            localStorage.setItem("isAuth", true);
             setIsAuth(true);
+            localStorage.setItem("isAuth", isAuth);            
             navigate('/');
         } catch (error) {
             console.error(error);
