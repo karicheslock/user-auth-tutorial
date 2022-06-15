@@ -12,6 +12,8 @@ function Login() {
 
     const navigate = useNavigate();
 
+    isAuth;
+
     const isInvalid = email === '' || password === '';
     
     const signInWithGoogle = () => {

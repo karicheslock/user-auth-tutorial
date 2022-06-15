@@ -22,6 +22,7 @@ function SignUp() {
 
     const navigate = useNavigate();
     
+    isAuth;
 
     const isEmailInvalid = email !== confirmEmail;
     const isPasswordInvalid = password !== confirmPassword;
